@@ -2,7 +2,8 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:quran_app/theme.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:quran_app/ui/pages/surah_ayat_tab.dart';
-import 'package:quran_app/ui/pages/surah_tafsis_tab.dart';
+import 'package:quran_app/ui/pages/surah_tafsir_tab.dart';
+import 'package:quran_app/ui/widgets/custom_appbar_widget.dart';
 
 class SurahPage extends StatefulWidget {
   const SurahPage({Key? key}) : super(key: key);
@@ -29,6 +30,12 @@ class _HomePageState extends State<SurahPage>
 
   @override
   Widget build(BuildContext context) {
+    Widget appBar() {
+      return CustomAppBarWidget(
+        title: 'surah name',
+      );
+    }
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -43,6 +50,7 @@ class _HomePageState extends State<SurahPage>
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
+                  appBar(),
                   Container(
                     decoration: BoxDecoration(
                         color: const Color(0xffCB94E8),

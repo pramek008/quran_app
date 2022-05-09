@@ -54,7 +54,7 @@ class SurahTileWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Al Imran', style: txMedium),
+                    Text('An-Nas', style: txMedium),
                     Row(
                       children: [
                         Text(
