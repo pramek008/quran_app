@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quran_app/model/surah_model.dart';
 import 'package:quran_app/theme.dart';
 
 class AyatTileWidget extends StatelessWidget {
-  const AyatTileWidget({Key? key}) : super(key: key);
+  final Verse surah;
+  const AyatTileWidget(this.surah, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String bismilah = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
+
     return Padding(
       padding: const EdgeInsets.only(
         bottom: 20,
@@ -25,7 +29,7 @@ class AyatTileWidget extends StatelessWidget {
                     ),
                     Center(
                       child: Text(
-                        '290',
+                        surah.number.toString(),
                         style: txMedium.copyWith(
                           color: blackColor,
                           fontSize: 14,
@@ -46,7 +50,11 @@ class AyatTileWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    'يَكَادُ ٱلْبَرْقُ يَخْطَفُ أَبْصَٰرَهُمْ كُلَّمَآ أَضَآءَ لَهُم مَّشَوْا۟ فِيهِ وَإِذَآ أَظْلَمَ عَلَيْهِمْ قَامُوا۟ وَلَوْ شَآءَ ٱللَّهُ لَذَهَبَ بِسَمْعِهِمْ وَأَبْصَٰرِهِمْ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍ قَدِيرٌ',
+                    surah.text == bismilah
+                        ? surah.text
+                        : surah.text.replaceAll(
+                            RegExp(r'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'),
+                            ' '),
                     style: GoogleFonts.amiri(
                       fontSize: 30,
                       color: blackColor,
@@ -64,7 +72,7 @@ class AyatTileWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Segala puji bagi Allah, Tuhan semesta alam.',
+                  surah.translationId,
                   style: txRegular.copyWith(
                     fontSize: 16,
                   ),

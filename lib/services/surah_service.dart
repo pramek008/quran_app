@@ -45,7 +45,8 @@ class SurahService {
     print(response.body);
 
     if (response.statusCode == 200) {
-      SurahModel surahData = SurahModel.fromJson(jsonDecode(response.body));
+      Map<String, dynamic> json = jsonDecode(response.body);
+      SurahModel surahData = SurahModel.fromJson(json);
       // List parseJson = jsonDecode(response.data);
 
       // final parseJson = jsonDecode(response.body);

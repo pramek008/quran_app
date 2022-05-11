@@ -35,7 +35,8 @@ class SurahModel {
 
   factory SurahModel.fromJson(Map<String, dynamic> json) => SurahModel(
         name: json["name"],
-        nameTranslations: NameTranslations.fromJson(json["name_translations"]),
+        nameTranslations: NameTranslations.fromJson(
+            json["name_translations"] as Map<String, dynamic>),
         numberOfAyah: json["number_of_ayah"],
         numberOfSurah: json["number_of_surah"],
         place: json["place"],

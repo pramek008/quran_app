@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/model/surah_model.dart';
 import 'package:quran_app/theme.dart';
 
 class HeadingCardSurahWidget extends StatelessWidget {
-  const HeadingCardSurahWidget({Key? key}) : super(key: key);
+  final SurahModel surah;
+
+  const HeadingCardSurahWidget(this.surah, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class HeadingCardSurahWidget extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Al-Fatiha',
+                  surah.name,
                   style: txMedium.copyWith(
                     color: whiteColor,
                     fontSize: 26,
@@ -40,7 +43,7 @@ class HeadingCardSurahWidget extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  'Pembukaan',
+                  surah.nameTranslations.id,
                   style: txMedium.copyWith(
                     color: whiteColor,
                     fontSize: 16,
@@ -60,7 +63,7 @@ class HeadingCardSurahWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Makkiyah',
+                      surah.type,
                       style: txMedium.copyWith(
                         color: whiteColor.withOpacity(0.9),
                         fontSize: 14,
@@ -77,7 +80,7 @@ class HeadingCardSurahWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '7 Ayat',
+                      '${surah.numberOfAyah} Ayat',
                       style: txMedium.copyWith(
                         color: whiteColor.withOpacity(0.9),
                         fontSize: 14,
