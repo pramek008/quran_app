@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran_app/bloc/all_surah_bloc.dart';
+import 'package:quran_app/model/getall_surah_model.dart';
 import 'package:quran_app/theme.dart';
 import 'package:quran_app/ui/widgets/card_lastread_widget.dart';
 import 'package:quran_app/ui/widgets/surah_tile_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<AllSurahBloc>().add(LoadApiEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +65,11 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget surahList() {
+    Widget surahList(List<AllSurahModel> allSurah) {
       return Column(
-        children: [
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-          SurahTileWidget(),
-        ],
-      );
+          children: allSurah.map((surah) {
+        return SurahTileWidget(surah);
+      }).toList());
     }
 
     return Scaffold(
@@ -74,12 +80,30 @@ class HomePage extends StatelessWidget {
             right: defaultMargin,
           ),
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                appBar(),
-                cardLastRead(),
-                surahList(),
-              ],
+            child: BlocBuilder<AllSurahBloc, AllSurahState>(
+              builder: (context, state) {
+                if (state is AllSurahSucces) {
+                  return Column(
+                    children: [
+                      appBar(),
+                      cardLastRead(),
+                      surahList(state.surahList),
+                    ],
+                  );
+                } else if (state is AllSurahError) {
+                  return const Center(
+                    child: Text('Error'),
+                  );
+                }
+                return const Center(child: CircularProgressIndicator());
+                // return Column(
+                //   children: [
+                //     appBar(),
+                //     cardLastRead(),
+                //     surahList([]),
+                //   ],
+                // );
+              },
             ),
           ),
         ),

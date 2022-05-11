@@ -5,8 +5,8 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class SurahModel {
-  SurahModel({
+class AllSurahModel {
+  AllSurahModel({
     required this.name,
     required this.nameTranslations,
     required this.numberOfAyah,
@@ -24,12 +24,12 @@ class SurahModel {
   final String recitation;
   final String type;
 
-  factory SurahModel.fromRawJson(String str) =>
-      SurahModel.fromJson(json.decode(str));
+  factory AllSurahModel.fromRawJson(String str) =>
+      AllSurahModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory SurahModel.fromJson(Map<String, dynamic> json) => SurahModel(
+  factory AllSurahModel.fromJson(Map<String, dynamic> json) => AllSurahModel(
         name: json["name"],
         nameTranslations: NameTranslations.fromJson(json["name_translations"]),
         numberOfAyah: json["number_of_ayah"],

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quran_app/model/getall_surah_model.dart';
 import 'package:quran_app/theme.dart';
 import 'package:quran_app/ui/pages/surah_main_page.dart';
 
 class SurahTileWidget extends StatelessWidget {
-  const SurahTileWidget({Key? key}) : super(key: key);
+  final AllSurahModel getAllSurah;
+
+  const SurahTileWidget(this.getAllSurah, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class SurahTileWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const SurahPage(),
+            builder: (context) => SurahPage(),
           ),
         );
       },
@@ -38,7 +41,7 @@ class SurahTileWidget extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          '114',
+                          getAllSurah.numberOfSurah.toString(),
                           style: txMedium.copyWith(
                             color: blackColor,
                             fontSize: 14,
@@ -54,11 +57,11 @@ class SurahTileWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('An-Nas', style: txMedium),
+                    Text(getAllSurah.name, style: txMedium),
                     Row(
                       children: [
                         Text(
-                          'Mekah',
+                          getAllSurah.type,
                           style: txMedium.copyWith(
                             color: greyColor,
                             fontSize: 12,
@@ -73,7 +76,7 @@ class SurahTileWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '200 Ayat',
+                          '${getAllSurah.numberOfAyah} Ayat',
                           style: txMedium.copyWith(
                             color: greyColor,
                             fontSize: 12,
@@ -85,7 +88,7 @@ class SurahTileWidget extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  'آل عمران',
+                  getAllSurah.nameTranslations.ar,
                   style: GoogleFonts.amiri(
                     fontSize: 20,
                     color: primaryColor,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quran_app/bloc/all_surah_bloc.dart';
 import 'package:quran_app/ui/pages/home_page.dart';
 import 'package:quran_app/ui/pages/on_board_page.dart';
 
@@ -12,16 +14,23 @@ class QuranApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: true,
-      title: 'Quran App',
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AllSurahBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: true,
+        title: 'Quran App',
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(),
+        ),
+        routes: {
+          '/': (context) => OnBoardPage(),
+          '/home': (context) => HomePage(),
+        },
       ),
-      routes: {
-        '/': (context) => OnBoardPage(),
-        '/home': (context) => HomePage(),
-      },
     );
   }
 }

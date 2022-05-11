@@ -2,10 +2,11 @@
 //
 //     final surahModel = surahModelFromJson(jsonString);
 
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class SurahModel {
+class SurahModel extends Equatable {
   SurahModel({
     required this.name,
     required this.nameTranslations,
@@ -31,7 +32,7 @@ class SurahModel {
   factory SurahModel.fromRawJson(String str) =>
       SurahModel.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  // String toRawJson() => json.encode(toJson());
 
   factory SurahModel.fromJson(Map<String, dynamic> json) => SurahModel(
         name: json["name"],
@@ -46,17 +47,30 @@ class SurahModel {
         tafsir: Tafsir.fromJson(json["tafsir"]),
       );
 
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "name_translations": nameTranslations.toJson(),
-        "number_of_ayah": numberOfAyah,
-        "number_of_surah": numberOfSurah,
-        "place": place,
-        "recitations": List<dynamic>.from(recitations.map((x) => x.toJson())),
-        "type": type,
-        "verses": List<dynamic>.from(verses.map((x) => x.toJson())),
-        "tafsir": tafsir.toJson(),
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "name": name,
+  //       "name_translations": nameTranslations.toJson(),
+  //       "number_of_ayah": numberOfAyah,
+  //       "number_of_surah": numberOfSurah,
+  //       "place": place,
+  //       "recitations": List<dynamic>.from(recitations.map((x) => x.toJson())),
+  //       "type": type,
+  //       "verses": List<dynamic>.from(verses.map((x) => x.toJson())),
+  //       "tafsir": tafsir.toJson(),
+  //     };
+
+  @override
+  List<Object?> get props => [
+        name,
+        nameTranslations,
+        numberOfAyah,
+        numberOfSurah,
+        place,
+        recitations,
+        type,
+        verses,
+        tafsir,
+      ];
 }
 
 class NameTranslations {
