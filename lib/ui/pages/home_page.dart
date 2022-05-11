@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_app/bloc/all_surah_bloc.dart';
 import 'package:quran_app/model/getall_surah_model.dart';
+import 'package:quran_app/model/surah_model.dart';
 import 'package:quran_app/theme.dart';
 import 'package:quran_app/ui/widgets/card_lastread_widget.dart';
 import 'package:quran_app/ui/widgets/surah_tile_widget.dart';
@@ -90,12 +91,20 @@ class _HomePageState extends State<HomePage> {
                       surahList(state.surahList),
                     ],
                   );
-                } else if (state is AllSurahError) {
+                } else if (state is AllSurahFailed) {
                   return const Center(
                     child: Text('Error'),
                   );
                 }
-                return const Center(child: CircularProgressIndicator());
+                return Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: primaryColor,
+                    ),
+                  ),
+                );
                 // return Column(
                 //   children: [
                 //     appBar(),

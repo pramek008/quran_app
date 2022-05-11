@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/bloc/all_surah_bloc.dart';
+import 'package:quran_app/bloc/surah_detail_bloc.dart';
 import 'package:quran_app/ui/pages/home_page.dart';
 import 'package:quran_app/ui/pages/on_board_page.dart';
 
@@ -18,6 +19,9 @@ class QuranApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AllSurahBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SurahDetailBloc(),
         ),
       ],
       child: MaterialApp(

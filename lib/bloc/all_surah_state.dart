@@ -20,7 +20,7 @@ class AllSurahSucces extends AllSurahState {
   List<Object> get props => [surahList];
 }
 
-class AllSurahError extends AllSurahState {
+class AllSurahFailed extends AllSurahState {
   // final String error;
 
   // const AllSurahError({required this.error});

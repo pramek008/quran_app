@@ -2,11 +2,10 @@
 //
 //     final surahModel = surahModelFromJson(jsonString);
 
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class SurahModel extends Equatable {
+class SurahModel {
   SurahModel({
     required this.name,
     required this.nameTranslations,

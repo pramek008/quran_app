@@ -16,7 +16,7 @@ class AllSurahBloc extends Bloc<AllSurahEvent, AllSurahState> {
 
           emit(AllSurahSucces(allSurah));
         } on Exception catch (e) {
-          throw e;
+          throw Exception(e.toString());
         }
         // emit(AllSurahSucces(
         //     surahList: activity
@@ -26,7 +26,7 @@ class AllSurahBloc extends Bloc<AllSurahEvent, AllSurahState> {
     );
 
     on<NoInternetEvent>((event, emit) {
-      emit(AllSurahError());
+      emit(AllSurahFailed());
     });
   }
 }
