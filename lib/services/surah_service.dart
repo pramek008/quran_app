@@ -47,6 +47,8 @@ class SurahService {
     if (response.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(response.body);
       SurahModel surahData = SurahModel.fromJson(json);
+
+      //!
       // List parseJson = jsonDecode(response.data);
 
       // final parseJson = jsonDecode(response.body);
@@ -63,8 +65,9 @@ class SurahService {
       // parseJson.forEach((element) {
       //   surahData.
       // });
+      //!
 
-      print('-------------------');
+      // print('-------------------');
       print(surahData);
 
       // return SurahModel.fromJson(surahData as Map<String, dynamic>);

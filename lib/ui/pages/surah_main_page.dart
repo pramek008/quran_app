@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quran_app/bloc/all_surah_bloc.dart';
 import 'package:quran_app/bloc/surah_detail_bloc.dart';
 import 'package:quran_app/model/surah_model.dart';
 
@@ -42,7 +41,7 @@ class _HomePageState extends State<SurahPage>
   Widget build(BuildContext context) {
     Widget appBar(SurahModel surah) {
       return CustomAppBarWidget(
-        title: surah.name,
+        title: '${surah.numberOfSurah}   ${surah.name}',
       );
     }
 
@@ -144,7 +143,7 @@ class _HomePageState extends State<SurahPage>
                         Expanded(
                           child: TabBarView(
                             controller: tabController,
-                            children: [
+                            children: const [
                               SurahAyatTab(),
                               SurahTafsirTab(),
                             ],

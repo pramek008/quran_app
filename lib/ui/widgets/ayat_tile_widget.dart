@@ -9,6 +9,10 @@ class AyatTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /** 
+    * * Digunakan untuk mengidentifikasi adanya bismilah atau tidak di ayat pertama
+    * * Jika ada bismilah, maka akan menampilkan ayat bismilah
+    */
     String bismilah = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
 
     return Padding(
@@ -50,11 +54,24 @@ class AyatTileWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
+                    /*
+                    TODO surah.text == bismilah ? surah.text : surah.text.replaceAll( RegExp(r'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'),''),
+                    *  Digunakan untuk mengidentifikasi adanya bismilah atau tidak di ayat pertama
+                    *  Jika ada bismilah, maka akan menampilkan ayat bismilah
+                    *  Bisa dilihat pada response "API GetSurah verses.text" bahwa setiap ayat PERTAMA selalu terdapat bismilah
+                    *  Jadi digunakan pengkondisian agar bismilah tidak ditampilkan di ayat pertama KECUALI dalam Surah Al-Fatiha                  
+                    
+                    * jika tidak jeli maka seakan akan seluruh ayat pertama diawali bismilah (bismilah MASUK ke ayat)
+                    * untuk lebih jelas, bisa coba langsung 
+                    * gunakan syntax dibawah (surah.text) dan comment syntax yang aktif
+                    */
+                    //surah.text,
+
                     surah.text == bismilah
                         ? surah.text
                         : surah.text.replaceAll(
                             RegExp(r'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'),
-                            ' '),
+                            ''),
                     style: GoogleFonts.amiri(
                       fontSize: 30,
                       color: blackColor,
@@ -76,6 +93,7 @@ class AyatTileWidget extends StatelessWidget {
                   style: txRegular.copyWith(
                     fontSize: 16,
                   ),
+                  textAlign: TextAlign.left,
                 ),
               )
             ],
