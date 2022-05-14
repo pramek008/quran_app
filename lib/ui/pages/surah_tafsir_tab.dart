@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_app/bloc/surah_detail_bloc.dart';
-import 'package:quran_app/model/surah_model.dart';
+
 import 'package:quran_app/theme.dart';
 import 'package:quran_app/ui/widgets/tafsir_tile_widget.dart';
-import 'dart:convert';
 
 class SurahTafsirTab extends StatelessWidget {
   const SurahTafsirTab({Key? key}) : super(key: key);

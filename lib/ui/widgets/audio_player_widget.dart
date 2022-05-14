@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+import 'package:quran_app/theme.dart';
+import 'package:audioplayers/audioplayers.dart';
+
+class AudioPlayerWidget extends StatelessWidget {
+  final audioPlayer = AudioPlayer();
+  final Duration duration;
+  final Duration position;
+  final bool isPlaying;
+  final String url;
+
+  AudioPlayerWidget(this.duration, this.position, this.isPlaying, this.url,
+      {Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    String formatTime(Duration duration) {
+      String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+      final hours = twoDigits(duration.inHours);
+      final minutes = twoDigits(duration.inMinutes.remainder(60));
+      final seconds = twoDigits(duration.inSeconds.remainder(60));
+
+      return [
+        if (duration.inHours > 0) hours,
+        minutes,
+        seconds,
+      ].join(':');
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        // horizontal: 10,
+        vertical: 20,
+      ),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xffDF98FA),
+            Color(0xff9055FF),
+          ],
+        ),
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Mishari Rashid al-`Afasy",
+            style: txRegular.copyWith(
+              color: whiteColor,
+              fontSize: 18,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    Slider(
+                      min: 0,
+                      max: duration.inMilliseconds.toDouble(),
+                      value: position.inSeconds.toDouble(),
+                      onChanged: (value) async {},
+                      activeColor: Colors.white,
+                      inactiveColor: Colors.white38,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          formatTime(position),
+                          style: txRegular.copyWith(color: whiteColor),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.2,
+                        ),
+                        Text(
+                          formatTime(duration - position),
+                          style: txRegular.copyWith(color: whiteColor),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                CircleAvatar(
+                  radius: 20,
+                  child: IconButton(
+                    onPressed: () async {
+                      if (isPlaying) {
+                        await audioPlayer.pause();
+                      } else {
+                        await audioPlayer.play(url);
+                      }
+                    },
+                    icon: Icon(
+                      isPlaying ? Icons.pause : Icons.play_arrow,
+                      color: purpleColor,
+                    ),
+                  ),
+                  backgroundColor: whiteColor.withOpacity(0.9),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

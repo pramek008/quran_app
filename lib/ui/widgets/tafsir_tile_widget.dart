@@ -2,12 +2,9 @@ import 'dart:math';
 
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:quran_app/model/surah_model.dart';
 import 'package:quran_app/theme.dart';
 
 class TafsirTileWidget extends StatelessWidget {
-  // final Kemenag kemenag;
   final String k;
   final String v;
   const TafsirTileWidget(this.k, this.v, {Key? key}) : super(key: key);
