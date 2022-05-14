@@ -79,7 +79,7 @@ class OnBoardPage extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, '/home', (route) => false);
+                          context, '/navigation', (route) => false);
                     },
                     child: Text(
                       'Get Started',

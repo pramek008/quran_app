@@ -5,8 +5,9 @@ import 'package:quran_app/model/surah_model.dart';
 
 import 'package:quran_app/theme.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:quran_app/ui/pages/surah_ayat_tab.dart';
-import 'package:quran_app/ui/pages/surah_tafsir_tab.dart';
+import 'package:quran_app/ui/pages/surah_tab/surah_ayat_tab.dart';
+import 'package:quran_app/ui/pages/surah_tab/surah_tafsir_tab.dart';
+
 import 'package:quran_app/ui/widgets/custom_appbar_widget.dart';
 
 class SurahPage extends StatefulWidget {
@@ -157,7 +158,9 @@ class _HomePageState extends State<SurahPage>
             );
           }
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: primaryColor,
+            ),
           );
         },
       ),

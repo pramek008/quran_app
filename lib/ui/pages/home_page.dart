@@ -58,8 +58,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget cardLastRead() {
-      return Padding(
-        padding: const EdgeInsets.only(
+      return const Padding(
+        padding: EdgeInsets.only(
           bottom: 24,
         ),
         child: CardLastReadWidget(),
@@ -89,6 +89,9 @@ class _HomePageState extends State<HomePage> {
                       appBar(),
                       cardLastRead(),
                       surahList(state.surahList),
+                      const SizedBox(
+                        height: 80,
+                      )
                     ],
                   );
                 } else if (state is AllSurahFailed) {

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/bloc/all_surah_bloc.dart';
+import 'package:quran_app/bloc/page_cubit.dart';
 import 'package:quran_app/bloc/surah_detail_bloc.dart';
 import 'package:quran_app/ui/pages/home_page.dart';
+import 'package:quran_app/ui/pages/navigation_page.dart';
 import 'package:quran_app/ui/pages/on_board_page.dart';
 
 void main() {
@@ -17,6 +19,9 @@ class QuranApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => PageCubit(),
+        ),
         BlocProvider(
           create: (context) => AllSurahBloc(),
         ),
@@ -32,6 +37,7 @@ class QuranApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => OnBoardPage(),
+          '/navigation': (context) => NavigationPage(),
           '/home': (context) => HomePage(),
         },
       ),
