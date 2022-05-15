@@ -18,10 +18,6 @@ class AllSurahBloc extends Bloc<AllSurahEvent, AllSurahState> {
         } on Exception catch (e) {
           throw Exception(e.toString());
         }
-        // emit(AllSurahSucces(
-        //     surahList: activity
-        //         .map((e) => AllSurahModel.fromJson(e as Map<String, dynamic>))
-        //         .toList()));
       },
     );
 

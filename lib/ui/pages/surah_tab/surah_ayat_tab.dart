@@ -74,7 +74,7 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
       return Container(
         padding: const EdgeInsets.symmetric(
           // horizontal: 10,
-          vertical: 20,
+          vertical: 15,
         ),
         width: double.infinity,
         decoration: BoxDecoration(
@@ -92,9 +92,9 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
           children: [
             Text(
               surah.recitations.first.name,
-              style: txRegular.copyWith(
+              style: txMedium.copyWith(
                 color: whiteColor,
-                fontSize: 18,
+                fontSize: 20,
               ),
             ),
             Padding(
@@ -113,7 +113,6 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                         onChanged: (value) async {
                           final position = Duration(seconds: value.toInt());
                           await audioPlayer.seek(position);
-
                           await audioPlayer.resume();
                         },
                         activeColor: Colors.white,
@@ -145,7 +144,6 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                           await audioPlayer.pause();
                         } else {
                           String url = surah.recitations.first.audioUrl;
-
                           await audioPlayer.play(url);
                         }
                       },

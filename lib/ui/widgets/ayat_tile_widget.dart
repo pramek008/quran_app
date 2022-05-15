@@ -75,8 +75,8 @@ class AyatTileWidget extends StatelessWidget {
                     style: GoogleFonts.amiri(
                       fontSize: 30,
                       color: blackColor,
-                      height: 2.5,
-                      // letterSpacing: 1,
+                      height: 2.2,
+                      // letterSpacing: 0.5,
                     ),
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.justify,

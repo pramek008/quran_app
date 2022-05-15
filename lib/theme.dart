@@ -16,6 +16,8 @@ Color orangeColor = Color(0xffF9B091);
 Color backgrounColor = Color(0xffFAFAFA);
 
 //* Text Style
+TextStyle txLight =
+    GoogleFonts.poppins(fontWeight: FontWeight.w300, fontSize: 14);
 TextStyle txRegular =
     GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 14);
 TextStyle txMedium =

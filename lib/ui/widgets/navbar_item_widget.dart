@@ -21,8 +21,10 @@ class NavbarItemWidget extends StatelessWidget {
       },
       child: Image.asset(
         imgUrl,
-        width: 28,
-        height: 28,
+        width: context.read<PageCubit>().state == index ? 32 : 28,
+        height: context.read<PageCubit>().state == index ? 32 : 28,
+        // width: 28,
+        // height: 28,
         color: context.read<PageCubit>().state == index
             ? scdPurpleColor
             : greyColor,
