@@ -28,3 +28,5 @@ class AllSurahFailed extends AllSurahState {
   // @override
   // List<Object> get props => [error];
 }
+
+class NoInternetState extends AllSurahState {}

@@ -31,11 +31,11 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Row(
           children: [
-            Icon(
-              Icons.menu_rounded,
-              color: greyColor,
-              size: 30,
-            ),
+            // Icon(
+            //   Icons.menu_rounded,
+            //   color: greyColor,
+            //   size: 30,
+            // ),
             const SizedBox(
               width: 24,
             ),
