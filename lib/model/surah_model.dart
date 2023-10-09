@@ -2,7 +2,6 @@
 //
 //     final surahModel = surahModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class SurahModel {
@@ -59,7 +58,6 @@ class SurahModel {
   //       "tafsir": tafsir.toJson(),
   //     };
 
-  @override
   List<Object?> get props => [
         name,
         nameTranslations,

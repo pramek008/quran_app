@@ -2,7 +2,6 @@
 //
 //     final surahModel = surahModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class AllSurahModel {

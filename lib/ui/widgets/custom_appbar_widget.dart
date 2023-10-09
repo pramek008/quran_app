@@ -35,11 +35,11 @@ class CustomAppBarWidget extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Icon(
-            Icons.search_rounded,
-            color: greyColor,
-            size: 30,
-          ),
+          // Icon(
+          //   Icons.search_rounded,
+          //   color: greyColor,
+          //   size: 30,
+          // ),
         ],
       ),
     );

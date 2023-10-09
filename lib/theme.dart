@@ -5,15 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 double defaultMargin = 24.0;
 
 //* Color Theme
-Color primaryColor = Color(0xFF863ED5);
-Color blackColor = Color(0xFF240F4F);
-Color greyColor = Color(0xFF8789A3);
-Color whiteColor = Color(0xFFFFFFFF);
-Color purpleColor = Color(0xff994EF8);
-Color scdPurpleColor = Color(0xff672CBC);
-Color orangeColor = Color(0xffF9B091);
+Color primaryColor = const Color(0xFF863ED5);
+Color blackColor = const Color(0xFF240F4F);
+Color greyColor = const Color(0xFF8789A3);
+Color whiteColor = const Color(0xFFFFFFFF);
+Color purpleColor = const Color(0xff994EF8);
+Color scdPurpleColor = const Color(0xff672CBC);
+Color orangeColor = const Color(0xffF9B091);
 
-Color backgrounColor = Color(0xffFAFAFA);
+Color backgrounColor = const Color(0xffFAFAFA);
 
 //* Text Style
 TextStyle txLight =

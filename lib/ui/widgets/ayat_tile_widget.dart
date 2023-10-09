@@ -55,7 +55,7 @@ class AyatTileWidget extends StatelessWidget {
                 Expanded(
                   child: Text(
                     /*
-                    TODO surah.text == bismilah ? surah.text : surah.text.replaceAll( RegExp(r'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'),''),
+                    *  surah.text == bismilah ? surah.text : surah.text.replaceAll( RegExp(r'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ'),''),
                     *  Digunakan untuk mengidentifikasi adanya bismilah atau tidak di ayat pertama
                     *  Jika ada bismilah, maka akan menampilkan ayat bismilah
                     *  Bisa dilihat pada response "API GetSurah verses.text" bahwa setiap ayat PERTAMA selalu terdapat bismilah

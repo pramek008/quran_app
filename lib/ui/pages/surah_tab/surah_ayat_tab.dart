@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_app/bloc/surah_detail_bloc.dart';
 import 'package:quran_app/model/surah_model.dart';
 import 'package:quran_app/theme.dart';
-// import 'package:quran_app/ui/widgets/audio_player_widget.dart';
+
 import 'package:quran_app/ui/widgets/ayat_tile_widget.dart';
 import 'package:quran_app/ui/widgets/card_heading_surah.dart';
 
@@ -27,7 +27,7 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
 
     audioPlayer.onPlayerStateChanged.listen((event) {
       setState(() {
-        isPlaying = event == PlayerState.PLAYING;
+        isPlaying = event == PlayerState.playing;
       });
     });
 
@@ -37,7 +37,7 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
       });
     });
 
-    audioPlayer.onAudioPositionChanged.listen((newPosition) {
+    audioPlayer.onPositionChanged.listen((newPosition) {
       setState(() {
         position = newPosition;
       });
@@ -113,7 +113,7 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                         onChanged: (value) async {
                           final position = Duration(seconds: value.toInt());
                           await audioPlayer.seek(position);
-                          await audioPlayer.resume();
+                          await audioPlayer.pause();
                         },
                         activeColor: Colors.white,
                         inactiveColor: Colors.white38,
@@ -138,13 +138,15 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                   ),
                   CircleAvatar(
                     radius: 20,
+                    backgroundColor: whiteColor.withOpacity(0.9),
                     child: IconButton(
                       onPressed: () async {
                         if (isPlaying) {
                           await audioPlayer.pause();
                         } else {
                           String url = surah.recitations.first.audioUrl;
-                          await audioPlayer.play(url);
+                          await audioPlayer.setSourceUrl(url);
+                          await audioPlayer.resume();
                         }
                       },
                       icon: Icon(
@@ -152,7 +154,6 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                         color: purpleColor,
                       ),
                     ),
-                    backgroundColor: whiteColor.withOpacity(0.9),
                   )
                 ],
               ),
@@ -163,13 +164,13 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
     }
 
     Widget ayatList(SurahModel surah) {
-      return Padding(
-        padding: const EdgeInsets.only(
-          bottom: 35,
-        ),
-        child: Column(
-          children: surah.verses.map((e) => AyatTileWidget(e)).toList(),
-        ),
+      return ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: surah.verses.length,
+        itemBuilder: (context, index) {
+          return AyatTileWidget(surah.verses[index]);
+        },
       );
     }
 
@@ -188,7 +189,11 @@ class _SurahAyatTabState extends State<SurahAyatTab> {
                   const SizedBox(
                     height: 40,
                   ),
+                  // ayatList(state.surahDetail),
                   ayatList(state.surahDetail),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
                 ],
               ),
             );

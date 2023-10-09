@@ -18,9 +18,9 @@ class SurahService {
       List<AllSurahModel> allsurah = [];
       List parseJson = jsonDecode(response.body);
 
-      parseJson.forEach((element) {
+      for (var element in parseJson) {
         allsurah.add(AllSurahModel.fromJson(element));
-      });
+      }
 
       // print('---------parsed Json----------');
       // print(parseJson);

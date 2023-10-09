@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/model/getall_surah_model.dart';
 import 'package:quran_app/theme.dart';
+import 'package:quran_app/ui/pages/home_page.dart';
 import 'package:quran_app/ui/pages/surah_main_page.dart';
 
 class SurahTileWidget extends StatelessWidget {
@@ -13,11 +14,14 @@ class SurahTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => SurahPage(getAllSurah.numberOfSurah),
-          ),
-        );
+        Navigator.of(context)
+            .push(
+              MaterialPageRoute(
+                builder: (context) => SurahPage(getAllSurah.numberOfSurah),
+              ),
+            )
+            .then((value) => Navigator.of(context)
+                .pushNamedAndRemoveUntil('/navigation', (route) => false));
       },
       child: Container(
         padding: const EdgeInsets.only(

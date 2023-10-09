@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/bloc/all_surah_bloc.dart';
 import 'package:quran_app/bloc/page_cubit.dart';
 import 'package:quran_app/bloc/surah_detail_bloc.dart';
-import 'package:quran_app/services/connectivity_service.dart';
 import 'package:quran_app/services/surah_service.dart';
 import 'package:quran_app/ui/pages/home_page.dart';
 import 'package:quran_app/ui/pages/navigation_page.dart';
@@ -25,8 +24,7 @@ class QuranApp extends StatelessWidget {
           create: (context) => PageCubit(),
         ),
         BlocProvider(
-          create: (context) =>
-              AllSurahBloc(SurahService(), ConnectivityService()),
+          create: (context) => AllSurahBloc(SurahService()),
         ),
         BlocProvider(
           create: (context) => SurahDetailBloc(),
@@ -39,9 +37,9 @@ class QuranApp extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(),
         ),
         routes: {
-          '/': (context) => OnBoardPage(),
-          '/navigation': (context) => NavigationPage(),
-          '/home': (context) => HomePage(),
+          '/': (context) => const OnBoardPage(),
+          '/navigation': (context) => const NavigationPage(),
+          '/home': (context) => const HomePage(),
         },
       ),
     );

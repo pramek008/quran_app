@@ -7,7 +7,7 @@ import 'package:quran_app/theme.dart';
 import 'package:quran_app/ui/pages/bookmark_page.dart';
 import 'package:quran_app/ui/pages/home_page.dart';
 import 'package:quran_app/ui/pages/info_page.dart';
-import 'package:quran_app/ui/pages/nointernet_page.dart';
+// import 'package:quran_app/ui/pages/nointernet_page.dart';
 import 'package:quran_app/ui/pages/pray_page.dart';
 import 'package:quran_app/ui/pages/salat_page.dart';
 import 'package:quran_app/ui/widgets/navbar_item_widget.dart';

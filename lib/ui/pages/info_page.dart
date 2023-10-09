@@ -7,7 +7,7 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff9559FF).withOpacity(0.9),
+      backgroundColor: const Color(0xff9559FF).withOpacity(0.9),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -29,7 +29,7 @@ class InfoPage extends StatelessWidget {
               Text(
                 'Version 1.0',
                 style: txLight.copyWith(
-                  color: Color(0xffDBDBDB),
+                  color: const Color(0xffDBDBDB),
                   fontSize: 20,
                 ),
               ),
@@ -53,7 +53,7 @@ class InfoPage extends StatelessWidget {
                 child: Text(
                   'UI App Design by : Tanvir Ahassan @tanvir_ux',
                   style: txLight.copyWith(
-                    color: Color(0xffDBDBDB),
+                    color: const Color(0xffDBDBDB),
                     fontSize: 20,
                   ),
                   textAlign: TextAlign.center,

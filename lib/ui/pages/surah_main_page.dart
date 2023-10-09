@@ -115,22 +115,22 @@ class _HomePageState extends State<SurahPage>
                                   controller: tabController,
                                   tabs: [
                                     Tab(
+                                      height: 40,
                                       child: Text(
                                         'Surah',
                                         style: txRegular.copyWith(
                                           fontSize: 16,
                                         ),
                                       ),
-                                      height: 40,
                                     ),
                                     Tab(
+                                      height: 40,
                                       child: Text(
                                         'Tafsir',
                                         style: txRegular.copyWith(
                                           fontSize: 16,
                                         ),
                                       ),
-                                      height: 40,
                                     ),
                                   ],
                                 ),

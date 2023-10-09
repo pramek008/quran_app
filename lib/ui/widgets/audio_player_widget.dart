@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran_app/theme.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class AudioPlayerWidget extends StatelessWidget {
-  final audioPlayer = AudioPlayer();
+class AudioPlayerWidget extends StatefulWidget {
   final Duration duration;
   final Duration position;
   final bool isPlaying;
@@ -12,6 +11,13 @@ class AudioPlayerWidget extends StatelessWidget {
   AudioPlayerWidget(this.duration, this.position, this.isPlaying, this.url,
       {Key? key})
       : super(key: key);
+
+  @override
+  State<AudioPlayerWidget> createState() => _AudioPlayerWidgetState();
+}
+
+class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
+  final audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +72,8 @@ class AudioPlayerWidget extends StatelessWidget {
                   children: [
                     Slider(
                       min: 0,
-                      max: duration.inMilliseconds.toDouble(),
-                      value: position.inSeconds.toDouble(),
+                      max: widget.duration.inMilliseconds.toDouble(),
+                      value: widget.position.inSeconds.toDouble(),
                       onChanged: (value) async {},
                       activeColor: Colors.white,
                       inactiveColor: Colors.white38,
@@ -76,14 +82,14 @@ class AudioPlayerWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          formatTime(position),
+                          formatTime(widget.position),
                           style: txRegular.copyWith(color: whiteColor),
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.2,
                         ),
                         Text(
-                          formatTime(duration - position),
+                          formatTime(widget.duration - widget.position),
                           style: txRegular.copyWith(color: whiteColor),
                         ),
                       ],
@@ -92,20 +98,21 @@ class AudioPlayerWidget extends StatelessWidget {
                 ),
                 CircleAvatar(
                   radius: 20,
+                  backgroundColor: whiteColor.withOpacity(0.9),
                   child: IconButton(
                     onPressed: () async {
-                      if (isPlaying) {
+                      if (widget.isPlaying) {
                         await audioPlayer.pause();
                       } else {
-                        await audioPlayer.play(url);
+                        await audioPlayer.setSourceUrl(widget.url);
+                        await audioPlayer.resume();
                       }
                     },
                     icon: Icon(
-                      isPlaying ? Icons.pause : Icons.play_arrow,
+                      widget.isPlaying ? Icons.pause : Icons.play_arrow,
                       color: purpleColor,
                     ),
                   ),
-                  backgroundColor: whiteColor.withOpacity(0.9),
                 )
               ],
             ),

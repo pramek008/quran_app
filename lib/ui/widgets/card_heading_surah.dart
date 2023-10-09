@@ -12,7 +12,7 @@ class HeadingCardSurahWidget extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.36,
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 28,
       ),
       decoration: BoxDecoration(
